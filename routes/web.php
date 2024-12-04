@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,5 +36,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+Route::middleware('auth:sanctum')->get('/jobs',function(){
+    return Inertia::render('Jobs');
+})->name('job.index');
+
+
+Route::middleware('auth:sanctum')->get('/admin',function(){
+    return Inertia::render('AdminDashboard');
+})->name('admin.index');
+
+Route::middleware('auth:sanctum')->get('/application',function(){
+    return Inertia::render('application');
+})->name('application.index');
+
+
+Route::resource('/companies',CompaniesController::class)->withoutMiddleware(VerifyCsrfToken::class);
 
 require __DIR__.'/auth.php';

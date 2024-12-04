@@ -7,7 +7,7 @@ import {
     AlertDialogFooter,
     AlertDialogHeader,
 } from "@/Components/ui/alert-dialog";
-import Alert from "./Alert";
+
 import { useState } from "react";
 
 export default function Dashboard({ auth }: PageProps) {
@@ -20,9 +20,12 @@ export default function Dashboard({ auth }: PageProps) {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+                <div className="font-semibold text-xl text-gray-800 leading-tight flex flex-col">
                     Dashboard
-                </h2>
+
+                    <span>Welcome Amir Mues Hassan</span>
+                </div>
+                
             }
         >
             <Head title="Dashboard" />
@@ -34,7 +37,7 @@ export default function Dashboard({ auth }: PageProps) {
                             You're logged in!
                         </div>
                         <Button>Click ME</Button>
-                       <Alert open={open} onOpenChange/>
+                  
                     </div>
                 </div>
             </div>
