@@ -57,7 +57,7 @@ const data = {
       items: [
         {
           title: "Jobs",
-          url: "job.index",
+          url: "jobs.index",
         },
         {
           title: "applications",
