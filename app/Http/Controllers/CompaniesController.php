@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Companies;
-use Faker\Provider\ar_EG\Company;
+
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -68,19 +68,19 @@ class CompaniesController extends Controller
     }
 
     // Display the specified company.
-    public function show(Company $company)
+    public function show(Companies $company)
     {
         return view('companies.show', compact('company'));
     }
 
     // Show the form for editing the specified company.
-    public function edit(Company $company)
+    public function edit(Companies $company)
     {
         return view('companies.edit', compact('company'));
     }
 
     // Update the specified company in storage.
-    public function update(Request $request, Company $company)
+    public function update(Request $request, Companies $company)
     {
         // Validate the request data
         $request->validate([
@@ -115,7 +115,7 @@ class CompaniesController extends Controller
     }
 
     // Remove the specified company from storage.
-    public function destroy(Company $company)
+    public function destroy(Companies $company)
     {
         $company->delete(); // Delete the company
 
