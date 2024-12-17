@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jobs;
+use App\Models\Company;
+use App\Models\Job;
+
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -13,7 +15,12 @@ class JobsController extends Controller
      */
     public function index()
     {
-        return Inertia::render('jobs/Jobs');
+        $jobs = Job::with('company')->paginate(10);
+
+     
+        return Inertia::render('jobs/Jobs',[
+            'jobs' => $jobs, // Pass paginated data to the frontend
+        ]);
     }
 
     /**
@@ -30,7 +37,7 @@ class JobsController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'company_id' => 'required|exists:companies,company_id',
+            'company_id' => 'required|exists:companies,id',
             'title' => 'required|string|max:100',
             'description' => 'required|string',
             'location' => 'nullable|string|max:100',
@@ -41,7 +48,7 @@ class JobsController extends Controller
         ]);
 
         // Create the job record
-        Jobs::create([
+        Job::create([
             'company_id' => $request->input('company_id'),
             'title' => $request->input('title'),
             'description' => $request->input('description'),

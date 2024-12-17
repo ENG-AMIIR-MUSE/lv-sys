@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Companies;
-
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,7 +14,7 @@ class CompaniesController extends Controller
     {
         
 
-        $companies = Companies::all(); // Retrieve all companies
+        $companies = Company::all(); // Retrieve all companies
         return Inertia::render('companies/Comapanies')->with('success', $companies);
        
         // return view('companies.index', compact('companies')); // Return companies to a view
@@ -46,7 +46,7 @@ class CompaniesController extends Controller
         ]);
 
         // Create the company
-        $company = new Companies();
+        $company = new Company();
         $company->user_id = auth()->id(); // Assuming the user is authenticated
         $company->company_name = $request->company_name;
         $company->website = $request->website;
@@ -68,19 +68,19 @@ class CompaniesController extends Controller
     }
 
     // Display the specified company.
-    public function show(Companies $company)
+    public function show(Company $company)
     {
         return view('companies.show', compact('company'));
     }
 
     // Show the form for editing the specified company.
-    public function edit(Companies $company)
+    public function edit(Company $company)
     {
         return view('companies.edit', compact('company'));
     }
 
     // Update the specified company in storage.
-    public function update(Request $request, Companies $company)
+    public function update(Request $request, Company $company)
     {
         // Validate the request data
         $request->validate([
@@ -115,7 +115,7 @@ class CompaniesController extends Controller
     }
 
     // Remove the specified company from storage.
-    public function destroy(Companies $company)
+    public function destroy(Company $company)
     {
         $company->delete(); // Delete the company
 

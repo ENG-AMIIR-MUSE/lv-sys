@@ -16,6 +16,8 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/Components/ui/alert-dialog";
+import { Separator } from "@/components/ui/separator";
+
 
 
 export function AddCompany({ open, setStateModal }) {
@@ -66,13 +68,16 @@ export function AddCompany({ open, setStateModal }) {
     };
 
     return (
-        <div className="bg-red-500 w-full ">
+       
             <AlertDialog    open={open} onOpenChange={setStateModal}>
-                <AlertDialogContent>
+                <AlertDialogContent className="max-w-[800px] " >
                     <AlertDialogHeader>
+                    <Separator/>
+
                         <AlertDialogTitle>Add New Company</AlertDialogTitle>
-                        <AlertDialogDescription>
-                            <form onSubmit={handleSubmit}>
+                        <Separator/>
+                        <AlertDialogDescription >
+                            <form onSubmit={handleSubmit} className="mt-10">
                                 <div className="space-y-4">
                                     <div>
                                         <Label>Company Name</Label>
@@ -125,8 +130,8 @@ export function AddCompany({ open, setStateModal }) {
                                     </div>
 
                                   
-                                    <div className="flex items-center gap-5">
-                                        <div>
+                                    <div className="flex items-center gap-5 ">
+                                        <div className="w-full">
                                             <Label>State</Label>
                                             <Input
                                                 type="text"
@@ -134,7 +139,7 @@ export function AddCompany({ open, setStateModal }) {
                                                 value={data.state}
                                                 onChange={handleChange}
                                                 placeholder="State"
-                                                className="w-full"
+                                                className="w-full "
                                             />
                                             {errors.state && (
                                                 <div className="text-red-500 text-sm">
@@ -142,7 +147,7 @@ export function AddCompany({ open, setStateModal }) {
                                                 </div>
                                             )}
                                         </div>
-                                        <div>
+                                        <div className="w-full">
                                             <Label>City</Label>
                                             <Input
                                                 type="text"
@@ -159,7 +164,7 @@ export function AddCompany({ open, setStateModal }) {
                                             )}
                                         </div>
 
-                                        <div>
+                                        <div className="w-full">
                                             <Label>Country</Label>
                                             <Input
                                                 type="text"
@@ -167,7 +172,7 @@ export function AddCompany({ open, setStateModal }) {
                                                 value={data.country}
                                                 onChange={handleChange}
                                                 placeholder="Country"
-                                                className="w-full"
+                                                className="max-w-[1000px]"
                                             />
                                             {errors.country && (
                                                 <div className="text-red-500 text-sm">
@@ -247,6 +252,6 @@ export function AddCompany({ open, setStateModal }) {
                     </AlertDialogHeader>
                 </AlertDialogContent>
             </AlertDialog>
-        </div>
+     
     );
 }

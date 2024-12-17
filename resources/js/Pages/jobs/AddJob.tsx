@@ -68,7 +68,7 @@ export function AddJob({ open, setStateModal }) {
 
     return (
         <AlertDialog open={open} onOpenChange={setStateModal}>
-            <AlertDialogContent>
+            <AlertDialogContent className="max-w-[800px]  ">
                 <AlertDialogHeader>
                     <AlertDialogTitle>Add New Job</AlertDialogTitle>
                     <AlertDialogDescription>

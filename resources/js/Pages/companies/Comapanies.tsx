@@ -74,7 +74,8 @@ function Companies() {
                         {props.props.success.map((company) => (
                             <TableRow key={company.id}>
                                 <TableCell className="font-medium">
-                                    {company.logo}
+                                    <img className="w-full rounded-full  " src={`${company.logo}`} alt="" />
+                               
                                 </TableCell>
 
                                 <TableCell>{company.company_name}</TableCell>
