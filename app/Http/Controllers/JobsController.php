@@ -82,9 +82,34 @@ class JobsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jobs $jobs)
+    public function update(Request $request, Job $job)
     {
-        //
+        // Validate the request data
+        $request->validate([
+            'company_id' => 'required|exists:companies,id',
+            'title' => 'required|string|max:100',
+            'description' => 'required|string',
+            'location' => 'nullable|string|max:100',
+            'employment_type' => 'required|in:full_time,part_time,contract,internship',
+            'experience_level' => 'required|in:entry,mid,senior',
+            'salary_range' => 'nullable|string|max:50',
+            'closing_date' => 'nullable|date|after:today',
+        ]);
+
+        // Update the job record
+        $job->update([
+            'company_id' => $request->input('company_id'),
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'location' => $request->input('location'),
+            'employment_type' => $request->input('employment_type'),
+            'experience_level' => $request->input('experience_level'),
+            'salary_range' => $request->input('salary_range'),
+            'closing_date' => $request->input('closing_date'),
+        ]);
+
+        // Redirect or return a response
+        return redirect()->route('jobs.index')->with('success', 'Job updated successfully!');
     }
 
     /**

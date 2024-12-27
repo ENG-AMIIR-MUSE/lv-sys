@@ -12,11 +12,11 @@ class CompaniesController extends Controller
     // Display a listing of the companies.
     public function index()
     {
-        
+
 
         $companies = Company::all(); // Retrieve all companies
         return Inertia::render('companies/Comapanies')->with('success', $companies);
-       
+
         // return view('companies.index', compact('companies')); // Return companies to a view
     }
 
@@ -31,7 +31,7 @@ class CompaniesController extends Controller
     {
 
 
-        
+
         // Validate the request data
         $request->validate([
             'company_name' => 'required|string|max:100',
@@ -92,7 +92,7 @@ class CompaniesController extends Controller
             'city' => 'nullable|string',
             'state' => 'nullable|string',
             'country' => 'nullable|string',
-            'logo' => 'nullable|image|max:2048',
+            'logo' => 'required|string',
         ]);
 
         // Update the company

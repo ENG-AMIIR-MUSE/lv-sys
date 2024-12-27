@@ -17,6 +17,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import Jobs from "./Jobs";
 // import { Textarea } from "@/components/ui/textarea";
 
 interface Job {
@@ -55,7 +56,7 @@ export function EditJob({ job, open, onClose }: EditJobProps) {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        put(route('jobs.update', job.id), {
+        put(`/jobs/${job.id}`, {
             onSuccess: () => {
                 onClose();
             },
@@ -64,7 +65,7 @@ export function EditJob({ job, open, onClose }: EditJobProps) {
 
     return (
         <AlertDialog open={open} onOpenChange={onClose}>
-            <AlertDialogContent className="sm:max-w-[425px]">
+            <AlertDialogContent className="sm:max-w-[800px]">
                 <AlertDialogHeader>
                     <AlertDialogTitle>Edit Job</AlertDialogTitle>
                     <AlertDialogDescription>

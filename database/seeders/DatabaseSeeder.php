@@ -15,6 +15,12 @@ class DatabaseSeeder extends Seeder
         $users  = \App\Models\User::factory(10)->create();
         $company  = \App\Models\Company::factory(10)->recycle($users)->create();
         $jobs  = \App\Models\Job::factory(10)->recycle($company)->create();
+        $applications = \App\Models\applications::factory(10)
+            ->recycle($jobs)
+            ->recycle($users)
+            ->create();
+
+        $caegory  = \App\Models\Category::factory(10)->create();
 
 
 

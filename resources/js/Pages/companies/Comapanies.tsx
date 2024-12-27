@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm, usePage } from "@inertiajs/react"; // Inertia useForm hook
 
-import {FaEdit,FaTrash} from 'react-icons/fa'
+import { FaEdit, FaTrash } from 'react-icons/fa'
 import {
     Table,
     TableBody,
@@ -22,10 +22,10 @@ import Delete from "./Delete";
 
 function Companies() {
     const [open, setOpen] = useState(false);
-    const [openEdit,setOpenEdit] = useState(false);
-    const [selected,setSelected]  = useState(null)
-    const  [openDelete,setOpenDelete] = useState(false)
-    
+    const [openEdit, setOpenEdit] = useState(false);
+    const [selected, setSelected] = useState(null)
+    const [openDelete, setOpenDelete] = useState(false)
+
 
     const props = usePage();
 
@@ -43,7 +43,7 @@ function Companies() {
         setOpenDelete(!openDelete);
     };
 
-   
+
 
     return (
         <div className="mx-10 ">
@@ -51,7 +51,7 @@ function Companies() {
                 <h1 className="font-bold text-xl ">Companies</h1>
                 <Button onClick={setStateModal}>Add New Company</Button>
             </div>
-           
+
             <div className="mx-10">
                 <h1 className="font-bold text-xl mt-5 mb-5">Companies</h1>
                 <Table>
@@ -75,27 +75,27 @@ function Companies() {
                             <TableRow key={company.id}>
                                 <TableCell className="font-medium">
                                     <img className="w-full rounded-full  " src={`${company.logo}`} alt="" />
-                               
+
                                 </TableCell>
 
                                 <TableCell>{company.company_name}</TableCell>
                                 <TableCell>{company.website}</TableCell>
                                 <TableCell>{company.phone}</TableCell>
-                                <TableCell>{company.description}</TableCell>
+                                <TableCell>{company.description.slice(0, 50)}</TableCell>
                                 <TableCell>{company.address}</TableCell>
                                 <TableCell>{company.city}</TableCell>
                                 <TableCell>{company.state}</TableCell>
                                 <TableCell>{company.country}</TableCell>
                                 <TableCell>
                                     <div className="flex gap-3">
-                                        <FaEdit className="text-blue-500" onClick={()=>{
+                                        <FaEdit className="text-blue-500" onClick={() => {
                                             setSelected(company)
                                             setEditStaet()
                                         }}>Edit</FaEdit>
 
-                                        <FaTrash  color="bg-red-500" className="text-red-500 " onClick={()=>{
-                                        setSelected(company)
-                                 
+                                        <FaTrash color="bg-red-500" className="text-red-500 " onClick={() => {
+                                            setSelected(company)
+
 
                                             setDeleteStaet()
                                         }
@@ -107,9 +107,9 @@ function Companies() {
                     </TableBody>
                 </Table>
             </div>
-            <AddCompany  open={open} setStateModal={setStateModal}/>
-            <EditCompany selectedCompany = {selected}  open={openEdit} setStateModal={setEditStaet}/>
-            <Delete openDelete={openDelete} setDeleteState={setDeleteStaet} selectedId={selected}/>
+            <AddCompany open={open} setStateModal={setStateModal} />
+            <EditCompany selectedCompany={selected} open={openEdit} setStateModal={setEditStaet} />
+            <Delete openDelete={openDelete} setDeleteState={setDeleteStaet} selectedId={selected} />
         </div>
     );
 }

@@ -19,7 +19,12 @@ class Job extends Model
         'posted_at',
         'closing_date',
     ];
-    public function company(){
+    public function company()
+    {
         return $this->belongsTo(Company::class);
+    }
+    public function applications()
+    {
+        return $this->hasMany(applications::class);
     }
 }

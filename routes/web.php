@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\ProfileController;
@@ -39,23 +40,21 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware('auth:sanctum')->get('/j',function(){
+Route::middleware('auth:sanctum')->get('/j', function () {
     return Inertia::render('Jobs');
 })->name('job.index');
 
-
-Route::middleware('auth:sanctum')->get('/admin',function(){
+Route::middleware('auth:sanctum')->get('/admin', function () {
     return Inertia::render('AdminDashboard');
 })->name('admin.index');
 
-Route::middleware('auth:sanctum')->get('/application',function(){
+Route::middleware('auth:sanctum')->get('/application', function () {
     return Inertia::render('application');
 })->name('application.index');
 
 
 
-
-Route::resource('/companies',CompaniesController::class)->withoutMiddleware(VerifyCsrfToken::class);
-Route::resource('/jobs',JobsController::class)->withoutMiddleware(VerifyCsrfToken::class);
-
-require __DIR__.'/auth.php';
+Route::resource('/companies', CompaniesController::class)->withoutMiddleware(VerifyCsrfToken::class);
+Route::resource('/jobs', JobsController::class)->withoutMiddleware(VerifyCsrfToken::class);
+Route::resource('applications', ApplicationsController::class);
+require __DIR__ . '/auth.php';

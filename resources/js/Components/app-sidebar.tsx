@@ -61,19 +61,19 @@ const data = {
         },
         {
           title: "applications",
-          url: "application.index",
+          url: "applications.index",
         },
         {
           title: "Companies",
           url: "companies.index",
         },
-       
+
       ],
     },
 
 
   ],
-  
+
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -84,7 +84,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-     
+
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
