@@ -3,6 +3,7 @@ import {
   AudioWaveform,
   BookOpen,
   Bot,
+  ChevronRight,
   Command,
   Frame,
   GalleryVerticalEnd,
@@ -21,8 +22,16 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { title } from "process"
+import { CollapsibleTrigger, CollapsibleContent } from "@radix-ui/react-collapsible"
+import ResponsiveNavLink from "./ResponsiveNavLink"
 
 // This is sample data.
 const data = {
@@ -48,7 +57,17 @@ const data = {
       plan: "Free",
     },
   ],
+
+
   navMain: [
+    {
+      title: "Dashboard",
+      url: "dashboard",
+      icon: PieChart,
+      isActive: false,
+
+    },
+
     {
       title: "Jobs",
       url: "job.index",
@@ -57,6 +76,7 @@ const data = {
       items: [
         {
           title: "Jobs",
+
           url: "jobs.index",
         },
         {
@@ -66,6 +86,11 @@ const data = {
         {
           title: "Companies",
           url: "companies.index",
+        },
+        {
+          title: "Categories",
+
+          url: "categories.index",
         },
 
       ],
@@ -85,6 +110,24 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <NavMain items={data.navMain} />
 
+        <h1>dk</h1>
+        <SidebarMenuItem>
+          <SidebarMenuButton>click</SidebarMenuButton>
+        </SidebarMenuItem>
+        {/* <SidebarMenuItem>
+          <CollapsibleTrigger asChild>
+            <SidebarMenuButton tooltip='sd'>
+
+              <span>sdsd</span>
+              <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+            </SidebarMenuButton>
+          </CollapsibleTrigger>
+          <CollapsibleContent>
+            <SidebarMenuSub>
+              afsdf
+            </SidebarMenuSub>
+          </CollapsibleContent>
+        </SidebarMenuItem> */}
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

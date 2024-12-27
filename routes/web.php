@@ -4,6 +4,7 @@ use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -57,4 +58,5 @@ Route::middleware('auth:sanctum')->get('/application', function () {
 Route::resource('/companies', CompaniesController::class)->withoutMiddleware(VerifyCsrfToken::class);
 Route::resource('/jobs', JobsController::class)->withoutMiddleware(VerifyCsrfToken::class);
 Route::resource('applications', ApplicationsController::class);
+Route::resource('/categories', CategoryController::class);
 require __DIR__ . '/auth.php';
