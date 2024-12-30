@@ -98,7 +98,7 @@ function Applications({ auth, applications }: ApplicationsProps) {
                                     <TableCell>{application.user.email}</TableCell>
                                     <TableCell>{application.job_id}</TableCell>
                                     <TableCell>{application.status}</TableCell>
-                                    <TableCell>{application.cover_letter.slice(0, 50)}...</TableCell>
+                                    <TableCell>{application.cover_letter}</TableCell>
                                     <TableCell>
                                         <a href={application.resume} target="_blank" rel="noopener noreferrer">
                                             View Resume

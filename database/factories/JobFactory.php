@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-
+use App\Models\Category;
 use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,6 +21,7 @@ class JobFactory extends Factory
         return [
             'company_id' => Company::factory(), // Links to a Company
             'title' => $this->faker->jobTitle(),
+            "category_id" => Category::factory(),
             'description' => $this->faker->paragraph(),
             'location' => $this->faker->city(),
             'employment_type' => $this->faker->randomElement(['full_time', 'part_time', 'contract', 'internship']),

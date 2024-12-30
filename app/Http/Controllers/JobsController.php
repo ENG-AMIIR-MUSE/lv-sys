@@ -15,7 +15,7 @@ class JobsController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with('company')->paginate(10);
+        $jobs = Job::with('company', 'category')->paginate(10);
 
      
         return Inertia::render('jobs/Jobs',[
@@ -39,6 +39,7 @@ class JobsController extends Controller
         $request->validate([
             'company_id' => 'required|exists:companies,id',
             'title' => 'required|string|max:100',
+            'category_id' => 'required|exists:categories,id',
             'description' => 'required|string',
             'location' => 'nullable|string|max:100',
             'employment_type' => 'required|in:full_time,part_time,contract,internship',
@@ -52,6 +53,7 @@ class JobsController extends Controller
             'company_id' => $request->input('company_id'),
             'title' => $request->input('title'),
             'description' => $request->input('description'),
+            'category_id' => 'required|exists:categories,id',
             'location' => $request->input('location'),
             'employment_type' => $request->input('employment_type'),
             'experience_level' => $request->input('experience_level'),
